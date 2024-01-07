@@ -1,4 +1,5 @@
 const foodItems = ['Pizza', 'Burger', 'Pasta', 'Fried Rice', 'Ice Cream'];
+
 const prices = [10, 8, 12, 9, 5]; // Corresponding prices for each food item
 
 function addFoodItem(index) {
