@@ -13,7 +13,7 @@ for (let i = 0; i < foodItems.length; i++) {
     item.appendChild(foodName);
 
     const price = document.createElement('span');
-    price.textContent = '$' + prices[i];
+    price.textContent = '₹' + prices[i];
     item.appendChild(price);
 
     div.appendChild(item);
