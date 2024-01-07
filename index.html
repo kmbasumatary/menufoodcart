@@ -1,46 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        .full-width {
-            width: 98%;
-            border: 1px solid black;
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
             padding: 10px;
-            margin: 5px 0;
-            background-color: #f2f2f2;
+        }
+        .food-item {
+            width: calc(100% - 20px);
+            max-width: 400px;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .food-item:hover {
+            transform: scale(1.05);
+        }
+        .item {
+            padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: calc(100vh / 3); /* This will divide the viewport height by 3 */
-            overflow: auto; /* This will add a scrollbar if the content exceeds the div height */
-            border-radius: 15px; /* This will make the corners rounded */
-        }
-        .item {
-            display: flex;
-            align-items: center;
+            border-bottom: 1px solid #eee;
         }
         .item span {
-            margin-right: 10px;
-            font-size: 20px; /* This will increase the size of the letters */
+            font-size: 18px;
         }
         .counter {
             display: flex;
             align-items: center;
-        }
-        .counter span {
-            margin: 0 10px;
-            font-size: 20px; /* This will increase the size of the letters */
+            justify-content: space-around;
+            padding: 15px;
         }
         .counter button {
-            padding: 5px;
-            padding: 10px; /* This will increase the size of the buttons */
-            font-size: 20px; /* This will increase the size of the '+' and '-' signs */
+            padding: 8px;
+            font-size: 18px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .counter button:hover {
+            background-color: #45a049;
+        }
+        .count-box {
+            font-size: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div id="container"></div>
-
     <script src="script.js"></script>
 </body>
 </html>
