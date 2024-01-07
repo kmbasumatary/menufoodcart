@@ -1,9 +1,10 @@
 const foodItems = ['Pizza', 'Burger', 'Pasta', 'Fried Rice', 'Ice Cream'];
+const prices = [10, 8, 12, 9, 5]; // Corresponding prices for each food item
 
 function addFoodItem(index) {
     const div = document.createElement('div');
     div.className = 'food-item';
-    div.style.animationDelay = `${index * 0.2}s`;
+    div.style.animationDelay = `${index * 0.5}s`;
 
     const item = document.createElement('div');
     item.className = 'item';
@@ -13,7 +14,7 @@ function addFoodItem(index) {
     item.appendChild(foodName);
 
     const price = document.createElement('span');
-    price.textContent = '₹' + prices[index]; // Assuming 'prices' array is defined
+    price.textContent = '₹' + prices[index];
     item.appendChild(price);
 
     div.appendChild(item);
