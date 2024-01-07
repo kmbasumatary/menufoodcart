@@ -19,16 +19,19 @@
             margin: auto;
         }
         .food-item {
-            border: 2px solid #ddd; /* Increased border thickness */
-            border-radius: 20px; /* Increased border radius for a more rounded look */
+            border: 2px solid #ddd;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             cursor: pointer;
-            margin-bottom: 10px; /* Added margin to separate items */
+            margin-bottom: 10px;
+            opacity: 0; /* Initially set opacity to 0 for fading effect */
+            transform: translateY(50px); /* Initially set translateY for flying effect */
+            animation: fadeInAndFly 0.8s ease-out forwards; /* Animation definition */
         }
         .item,
         .counter {
-            background-color: white; /* Set background color here */
+            background-color: white;
         }
         .item {
             padding: 15px;
@@ -67,6 +70,18 @@
         .count-box {
             font-size: 20px;
             font-weight: bold;
+        }
+
+        /* Animation definition */
+        @keyframes fadeInAndFly {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
