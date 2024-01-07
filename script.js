@@ -37,7 +37,7 @@ async function addFoodItems() {
             counter.className = 'counter';
 
             const minusButton = document.createElement('button');
-            minusButton.textContent = '-';
+            minusButton.textContent = '–';
             minusButton.setAttribute('aria-label', 'Decrease quantity');
 
             const countBox = document.createElement('span');
