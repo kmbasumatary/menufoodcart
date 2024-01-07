@@ -5,7 +5,7 @@ const prices = [10, 8, 12, 9, 5]; // Corresponding prices for each food item
 function addFoodItem(index) {
     const div = document.createElement('div');
     div.className = 'food-item';
-    div.style.animationDelay = `${index * 0.5}s`; // Adjust the delay as needed
+    div.style.animationDelay = `${index * 0.2}s`; // Adjust the delay as needed
 
     const item = document.createElement('div');
     item.className = 'item';
