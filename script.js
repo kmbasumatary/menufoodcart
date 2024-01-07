@@ -1,56 +1,60 @@
-// Update the URL to point to your actual CSV file
-const csvFileUrl = 'food_data.csv';
-
 // Function to fetch and parse the CSV file
 async function fetchAndParseCSV(url) {
     const response = await fetch(url);
     const text = await response.text();
-    return Papa.parse(text, { header: true });
+    return Papa.parse(text, { header: true, skipEmptyLines: true });
 }
 
 // Function to add food items with staggered animation
 async function addFoodItems() {
-    const csvData = await fetchAndParseCSV(csvFileUrl);
+    const csvData = await fetchAndParseCSV('food_data.csv'); // Use the correct path to your CSV file
+
+    if (csvData.errors.length > 0) {
+        console.error('Error parsing CSV:', csvData.errors);
+        return;
+    }
 
     csvData.data.forEach((row, index) => {
-        const div = document.createElement('div');
-        div.className = 'food-item';
-        div.style.animationDelay = `${index * 0.1}s`;
+        if (row['FoodItem'] && row['Price']) {
+            const div = document.createElement('div');
+            div.className = 'food-item';
+            div.style.animationDelay = `${index * 0.1}s`;
 
-        const item = document.createElement('div');
-        item.className = 'item';
+            const item = document.createElement('div');
+            item.className = 'item';
 
-        const foodName = document.createElement('span');
-        foodName.textContent = row['FoodItem']; // Assuming the column name is 'FoodItem'
-        item.appendChild(foodName);
+            const foodName = document.createElement('span');
+            foodName.textContent = row['FoodItem'];
+            item.appendChild(foodName);
 
-        const price = document.createElement('span');
-        price.textContent = '₹' + row['Price']; // Assuming the column name is 'Price'
-        item.appendChild(price);
+            const price = document.createElement('span');
+            price.textContent = '₹' + row['Price'];
+            item.appendChild(price);
 
-        div.appendChild(item);
+            div.appendChild(item);
 
-        const counter = document.createElement('div');
-        counter.className = 'counter';
+            const counter = document.createElement('div');
+            counter.className = 'counter';
 
-        const minusButton = document.createElement('button');
-        minusButton.textContent = '-';
-        minusButton.setAttribute('aria-label', 'Decrease quantity');
+            const minusButton = document.createElement('button');
+            minusButton.textContent = '-';
+            minusButton.setAttribute('aria-label', 'Decrease quantity');
 
-        const countBox = document.createElement('span');
-        countBox.textContent = '0';
+            const countBox = document.createElement('span');
+            countBox.textContent = '0';
 
-        const plusButton = document.createElement('button');
-        plusButton.textContent = '+';
-        plusButton.setAttribute('aria-label', 'Increase quantity');
+            const plusButton = document.createElement('button');
+            plusButton.textContent = '+';
+            plusButton.setAttribute('aria-label', 'Increase quantity');
 
-        counter.appendChild(minusButton);
-        counter.appendChild(countBox);
-        counter.appendChild(plusButton);
+            counter.appendChild(minusButton);
+            counter.appendChild(countBox);
+            counter.appendChild(plusButton);
 
-        div.appendChild(counter);
+            div.appendChild(counter);
 
-        document.getElementById('container').appendChild(div);
+            document.getElementById('container').appendChild(div);
+        }
     });
 }
 
