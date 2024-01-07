@@ -1,19 +1,20 @@
 const foodItems = ['Pizza', 'Burger', 'Pasta', 'Fried Rice', 'Ice Cream'];
 const prices = [10, 8, 12, 9, 5]; // Corresponding prices for each food item
 
-for (let i = 0; i < foodItems.length; i++) {
+function addFoodItem(index) {
     const div = document.createElement('div');
-    div.className = 'food-item'; // Corrected class name
+    div.className = 'food-item';
+    div.style.animationDelay = `${index * 0.2}s`; // Adjust the delay as needed
 
     const item = document.createElement('div');
     item.className = 'item';
 
     const foodName = document.createElement('span');
-    foodName.textContent = foodItems[i];
+    foodName.textContent = foodItems[index];
     item.appendChild(foodName);
 
     const price = document.createElement('span');
-    price.textContent = '₹' + prices[i];
+    price.textContent = '₹' + prices[index];
     item.appendChild(price);
 
     div.appendChild(item);
@@ -39,6 +40,11 @@ for (let i = 0; i < foodItems.length; i++) {
     div.appendChild(counter);
 
     document.getElementById('container').appendChild(div);
+}
+
+// Add food items with a staggered animation
+for (let i = 0; i < foodItems.length; i++) {
+    addFoodItem(i);
 }
 
 document.getElementById('container').addEventListener('click', function(event) {
