@@ -26,12 +26,14 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             cursor: pointer;
         }
+        .food-item:not(:last-child) {
+            border-bottom: 1px solid #ddd;
+        }
         .item {
             padding: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #eee;
         }
         .item span {
             font-size: 18px;
