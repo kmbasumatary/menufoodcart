@@ -62,11 +62,12 @@ async function addFoodItems() {
 addFoodItems();
 
 document.getElementById('container').addEventListener('click', function(event) {
-    if (event.target.textContent === '+') {
-        const count = parseInt(event.target.previousSibling.textContent);
-        event.target.previousSibling.textContent = count + 1;
-    } else if (event.target.textContent === '-') {
+    if (event.target.textContent === '–') {
         const count = parseInt(event.target.nextSibling.textContent);
         event.target.nextSibling.textContent = count > 0 ? count - 1 : 0;
+    } else if (event.target.textContent === '+') {
+        const count = parseInt(event.target.previousSibling.textContent);
+        event.target.previousSibling.textContent = count + 1;
     }
 });
+
