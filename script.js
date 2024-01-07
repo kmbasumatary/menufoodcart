@@ -3,7 +3,7 @@ const prices = [10, 8, 12, 9, 5]; // Corresponding prices for each food item
 
 for (let i = 0; i < foodItems.length; i++) {
     const div = document.createElement('div');
-    div.className = 'full-width';
+    div.className = 'food-item'; // Corrected class name
 
     const item = document.createElement('div');
     item.className = 'item';
