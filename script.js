@@ -1,5 +1,5 @@
 // Update the URL to point to your actual CSV file
-const csvFileUrl = 'path/to/your/food_data.csv';
+const csvFileUrl = 'food_data.csv';
 
 // Function to fetch and parse the CSV file
 async function fetchAndParseCSV(url) {
