@@ -1,3 +1,6 @@
+const apiKey = process.env.API_KEY;
+console.log(API_KEY)
+
 // Function to fetch and parse the CSV file
 async function fetchAndParseCSV(url) {
     const response = await fetch(url);
