@@ -10,8 +10,6 @@ async function addFoodItems() {
     // Skip the first item (header) in the API response
     const foodItems = apiData.data.slice(1);
 
-    console.log(foodItems)
-
     foodItems.forEach((row, index) => {
         if (row['FoodItem'] && row['Price']) {
             const div = document.createElement('div');
