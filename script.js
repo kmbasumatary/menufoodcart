@@ -70,4 +70,3 @@ document.getElementById('container').addEventListener('click', function(event) {
         event.target.previousSibling.textContent = count + 1;
     }
 });
-
