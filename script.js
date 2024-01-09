@@ -1,17 +1,18 @@
-// Function to fetch and parse the CSV file
-async function fetchAndParseCSV(url) {
-    const response = await fetch(url);
-    const text = await response.text();
-    return Papa.parse(text, { header: true, skipEmptyLines: true });
-}
+ 
 // Function to add food items with staggered animation
 async function addFoodItems() {
-    const csvData = await fetchAndParseCSV('food_data.csv'); // Use the correct path to your CSV file
-    if (csvData.errors.length > 0) {
-        console.error('Error parsing CSV:', csvData.errors);
+    const apiUrl = 'https://script.google.com/macros/s/AKfycbzJmNYjY85dHx__pow9OlgskUcoGIQa2-zvWUMjpe1AUvXOrMqrbsYuLswzZhipHhuG/exec'; // Replace with your API endpoint
+    const apiData = await fetchDataFromAPI(apiUrl);
+    if (!apiData || !apiData.data || apiData.data.length === 0) {
+        console.error('Error fetching data from the API');
         return;
     }
-    csvData.data.forEach((row, index) => {
+    // Skip the first item (header) in the API response
+    const foodItems = apiData.data.slice(1);
+
+    console.log(foodItems)
+
+    foodItems.forEach((row, index) => {
         if (row['FoodItem'] && row['Price']) {
             const div = document.createElement('div');
             div.className = 'food-item';
@@ -43,14 +44,3 @@ async function addFoodItems() {
         }
     });
 }
-// Call the function to add food items
-addFoodItems();
-document.getElementById('container').addEventListener('click', function(event) {
-    if (event.target.textContent === '–') {
-        const count = parseInt(event.target.nextSibling.textContent);
-        event.target.nextSibling.textContent = count > 0 ? count - 1 : 0;
-    } else if (event.target.textContent === '+') {
-        const count = parseInt(event.target.previousSibling.textContent);
-        event.target.previousSibling.textContent = count + 1;
-    }
-});
