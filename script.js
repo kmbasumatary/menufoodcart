@@ -12,7 +12,7 @@ async function fetchAndParseExcel(url) {
 // Function to add food items with staggered animation
 async function addFoodItems() {
     const excelData = await fetchAndParseExcel('food_data.xlsx'); // Use the correct path to your Excel file
-    excelData.forEach((row, index) => {
+    excelData.slice(1).forEach((row, index) => {
         if (row[0] && row[1]) {
             const div = document.createElement('div');
             div.className = 'food-item';
