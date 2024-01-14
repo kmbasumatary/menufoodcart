@@ -2,6 +2,8 @@ name: Pull File from Google Drive to GitHub
 
 on:
   workflow_dispatch: # Manually trigger the workflow
+  schedule:
+    - cron: '0 * * * *' # Run every hour
   push:
     paths:
       - food_data.csv # Specify the filename of your CSV file
