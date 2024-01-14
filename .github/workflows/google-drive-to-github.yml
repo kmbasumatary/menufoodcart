@@ -1,0 +1,28 @@
+name: Pull File from Google Drive to GitHub
+
+on:
+  workflow_dispatch: # Manually trigger the workflow
+  push:
+    paths:
+      - food_data.csv # Specify the filename of your CSV file
+
+jobs:
+  pull-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Download File from Google Drive
+        run: |
+          wget -O food_data.csv "https://drive.google.com/uc?export=download&id=1TrRYlK65xlwsosJQutqcuRS2kw_8qcqt"
+          # Replace YOUR_FILE_ID with the actual file ID from the shareable link
+
+      - name: Commit and Push
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add food_data.csv
+          git commit -m "Imported CSV file from Google Drive"
+          git push
