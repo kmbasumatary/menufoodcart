@@ -6,7 +6,7 @@ async function fetchAndParseCSV(url) {
 
 // Function to add food items with staggered animation
 async function addFoodItems() {
-    const csvData = await fetchAndParseCSV('your_menu_data.csv'); // Use the correct path to your CSV file
+    const csvData = await fetchAndParseCSV('food_data.csv'); // Use the correct path to your CSV file
     if (csvData.errors.length > 0) {
         console.error('Error parsing CSV:', csvData.errors);
         return;
