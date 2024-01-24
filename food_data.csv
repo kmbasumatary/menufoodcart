@@ -1,13 +1,13 @@
-FoodItem,Price,DiscountedPrice
-Veg Roll,70,63
-Egg Roll,70,63
-Chicken Roll,70,63
-Veg Chowmein,40,36
-Egg Chowmein,50,45
-Chicken Chowmein,60,54
-Veg Fried Rice,40,36
-Egg Fried Rice,50,45
-Chicken Fried Rice,60,54
-Veg Momo,40,36
-Chicken Momo,50,45
-Chicken Biryani,100,90
+FoodItem,Price,DiscountedPrice,ItemsLeft
+Veg Roll,70,63,10
+Egg Roll,70,63,15
+Chicken Roll,70,63,20
+Veg Chowmein,40,36,30
+Egg Chowmein,50,45,25
+Chicken Chowmein,60,54,20
+Veg Fried Rice,40,36,30
+Egg Fried Rice,50,45,25
+Chicken Fried Rice,60,54,20
+Veg Momo,40,36,30
+Chicken Momo,50,45,25
+Chicken Biryani,100,90,15
