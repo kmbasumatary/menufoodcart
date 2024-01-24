@@ -27,6 +27,8 @@ async function addFoodItems() {
 
             const itemsLeft = document.createElement('div');
             itemsLeft.textContent = 'Items left: ' + row['ItemsLeft'];
+            itemsLeft.style.fontSize = '0.8em'; // Make the font size smaller
+            itemsLeft.style.marginTop = '5px'; // Add some space between the food item name and the number of items left
             item.appendChild(itemsLeft);
 
             const priceDiv = document.createElement('div');
