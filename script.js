@@ -31,6 +31,7 @@ async function addFoodItems() {
             const discountedPrice = document.createElement('span');
             discountedPrice.textContent = '₹' + row['DiscountedPrice']; // Display the discounted price from the CSV file
             discountedPrice.style.color = 'red'; // Highlight the discounted price
+            discountedPrice.style.marginLeft = '10px'; // Add some space between the discounted price 
             priceDiv.appendChild(discountedPrice);
             item.appendChild(priceDiv);
             div.appendChild(item);
