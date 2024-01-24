@@ -22,14 +22,17 @@ async function addFoodItems() {
             const foodName = document.createElement('span');
             foodName.textContent = row['FoodItem'];
             item.appendChild(foodName);
+            const priceDiv = document.createElement('div');
+            priceDiv.style.display = 'flex'; // Add this line to make the prices display side by side
             const price = document.createElement('span');
             price.textContent = '₹' + row['Price'];
             price.style.textDecoration = 'line-through'; // Strike out the old price
-            item.appendChild(price);
+            priceDiv.appendChild(price);
             const discountedPrice = document.createElement('span');
             discountedPrice.textContent = '₹' + row['DiscountedPrice']; // Display the discounted price from the CSV file
             discountedPrice.style.color = 'red'; // Highlight the discounted price
-            item.appendChild(discountedPrice);
+            priceDiv.appendChild(discountedPrice);
+            item.appendChild(priceDiv);
             div.appendChild(item);
             const counter = document.createElement('div');
             counter.className = 'counter';
