@@ -1,3 +1,10 @@
+// Function to fetch and parse the CSV file
+async function fetchAndParseCSV(url) {
+    const response = await fetch(url);
+    const text = await response.text();
+    return Papa.parse(text, { header: true, skipEmptyLines: true });
+}
+
 // Function to add food items with staggered animation
 async function addFoodItems() {
     const csvData = await fetchAndParseCSV('food_data.csv'); // Use the correct path to your CSV file
