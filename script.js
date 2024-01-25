@@ -25,10 +25,9 @@ async function addFoodItems() {
             foodName.textContent = row['FoodItem'];
             item.appendChild(foodName);
 
-            const itemsLeft = document.createElement('div');
+            const itemsLeft = document.createElement('span');
+            itemsLeft.className = 'items-left'; // Add this line
             itemsLeft.textContent = 'Items left: ' + row['ItemsLeft'];
-            itemsLeft.style.fontSize = '0.8em'; // Make the font size smaller
-            itemsLeft.style.marginTop = '5px'; // Add some space between the food item name and the number of items left
             item.appendChild(itemsLeft);
 
             const priceDiv = document.createElement('div');
