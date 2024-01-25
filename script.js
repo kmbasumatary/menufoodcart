@@ -21,34 +21,25 @@ async function addFoodItems() {
             const item = document.createElement('div');
             item.className = 'item';
 
-            const itemInfo = document.createElement('div');
-            itemInfo.className = 'item-info'; // Add this line
+            const itemLeft = document.createElement('div');
+            itemLeft.className = 'item-left';
 
             const foodName = document.createElement('span');
             foodName.textContent = row['FoodItem'];
-            itemInfo.appendChild(foodName);
-
-            const itemsLeft = document.createElement('span');
-            itemsLeft.className = 'items-left'; // Add this line
-            itemsLeft.textContent = 'Items left: ' + row['ItemsLeft'];
-            itemInfo.appendChild(itemsLeft);
-
-            const priceDiv = document.createElement('div');
-            priceDiv.style.display = 'flex'; // Add this line to make the prices display side by side
+            itemLeft.appendChild(foodName);
 
             const price = document.createElement('span');
             price.textContent = '₹' + row['Price'];
-            price.style.textDecoration = 'line-through'; // Strike out the old price
-            priceDiv.appendChild(price);
+            itemLeft.appendChild(price);
 
-            const discountedPrice = document.createElement('span');
-            discountedPrice.textContent = '₹' + row['DiscountedPrice']; // Display the discounted price from the CSV file
-            discountedPrice.style.color = 'red'; // Highlight the discounted price
-            discountedPrice.style.marginLeft = '10px'; // Add some space between the discounted price and the old price
-            priceDiv.appendChild(discountedPrice);
+            item.appendChild(itemLeft);
 
-            itemInfo.appendChild(priceDiv);
-            item.appendChild(itemInfo);
+            const itemsLeft = document.createElement('span');
+            itemsLeft.textContent = 'Items left: ' + row['ItemsLeft'];
+            itemsLeft.className = 'items-left';
+            item.appendChild(itemsLeft);
+
+            div.appendChild(item);
 
             const counter = document.createElement('div');
             counter.className = 'counter';
