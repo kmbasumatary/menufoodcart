@@ -1,30 +1,30 @@
-# name: Pull File from Google Drive to GitHub
+name: Pull File from Google Drive to GitHub
 
-# on:
-#   workflow_dispatch: # Manually trigger the workflow
-#   # schedule:
-#   #   - cron: '*/15 * * * *' # Run every 15 minutes
-#   push:
-#     paths:
-#       - food_data.csv # Specify the filename of your CSV file
+on:
+  workflow_dispatch: # Manually trigger the workflow
+  schedule:
+    - cron: '*/15 * * * *' # Run every 15 minutes
+  push:
+    paths:
+      - food_data.csv # Specify the filename of your CSV file
 
-# jobs:
-#   pull-file:
-#     runs-on: ubuntu-latest
+jobs:
+  pull-file:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-#       - name: Download File from Google Drive
-#         run: |
-#           wget -O food_data.csv "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7R5O-MUJLx3LG64ycU-NbA_YCJZC9U6sayJgB3igJej0AbXq4PVj6XGNTm_l7wRBBzNzhnb9ATa3V/pub?gid=2064717552&single=true&output=csv"
-#           # Replace YOUR_FILE_ID with the actual file ID from the shareable link
+      - name: Download File from Google Drive
+        run: |
+          wget -O food_data.csv "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ7R5O-MUJLx3LG64ycU-NbA_YCJZC9U6sayJgB3igJej0AbXq4PVj6XGNTm_l7wRBBzNzhnb9ATa3V/pub?gid=2064717552&single=true&output=csv"
+          # Replace YOUR_FILE_ID with the actual file ID from the shareable link
 
-#       - name: Commit and Push
-#         run: |
-#           git config user.name "${{ github.actor }}"
-#           git config user.email "${{ github.actor }}@users.noreply.github.com"
-#           git add food_data.csv
-#           git diff --cached --exit-code || git commit -m "Imported CSV file from Google Drive" || true
-#           git push
+      - name: Commit and Push
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git add food_data.csv
+          git diff --cached --exit-code || git commit -m "Imported CSV file from Google Drive" || true
+          git push
