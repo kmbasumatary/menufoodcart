@@ -1,10 +1,3 @@
-// Function to fetch and parse the CSV file
-async function fetchAndParseCSV(url) {
-    const response = await fetch(url);
-    const text = await response.text();
-    return Papa.parse(text, { header: true, skipEmptyLines: true });
-}
-
 // Function to add food items with staggered animation
 async function addFoodItems() {
     const csvData = await fetchAndParseCSV('food_data.csv'); // Use the correct path to your CSV file
@@ -28,17 +21,21 @@ async function addFoodItems() {
             foodName.textContent = row['FoodItem'];
             itemLeft.appendChild(foodName);
 
+            const priceDiv = document.createElement('div');
+            priceDiv.style.display = 'flex'; // Add this line to make the prices display side by side
+
             const price = document.createElement('span');
             price.textContent = '₹' + row['Price'];
             price.style.textDecoration = 'line-through'; // Strike out the old price
-            itemLeft.appendChild(price);
+            priceDiv.appendChild(price);
 
             const discountedPrice = document.createElement('span');
             discountedPrice.textContent = '₹' + row['DiscountedPrice']; // Display the discounted price from the CSV file
             discountedPrice.style.color = 'red'; // Highlight the discounted price
             discountedPrice.style.marginLeft = '10px'; // Add some space between the prices
-            itemLeft.appendChild(discountedPrice);
+            priceDiv.appendChild(discountedPrice);
 
+            itemLeft.appendChild(priceDiv);
             item.appendChild(itemLeft);
 
             const itemsLeft = document.createElement('span');
