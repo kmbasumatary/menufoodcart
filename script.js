@@ -21,14 +21,17 @@ async function addFoodItems() {
             const item = document.createElement('div');
             item.className = 'item';
 
+            const itemInfo = document.createElement('div');
+            itemInfo.className = 'item-info'; // Add this line
+
             const foodName = document.createElement('span');
             foodName.textContent = row['FoodItem'];
-            item.appendChild(foodName);
-    
+            itemInfo.appendChild(foodName);
+
             const itemsLeft = document.createElement('span');
             itemsLeft.className = 'items-left'; // Add this line
             itemsLeft.textContent = 'Items left: ' + row['ItemsLeft'];
-            item.appendChild(itemsLeft);
+            itemInfo.appendChild(itemsLeft);
 
             const priceDiv = document.createElement('div');
             priceDiv.style.display = 'flex'; // Add this line to make the prices display side by side
@@ -41,11 +44,11 @@ async function addFoodItems() {
             const discountedPrice = document.createElement('span');
             discountedPrice.textContent = '₹' + row['DiscountedPrice']; // Display the discounted price from the CSV file
             discountedPrice.style.color = 'red'; // Highlight the discounted price
-            discountedPrice.style.marginLeft = '10px'; // Add some space between the discounted price 
+            discountedPrice.style.marginLeft = '10px'; // Add some space between the discounted price and the old price
             priceDiv.appendChild(discountedPrice);
 
-            item.appendChild(priceDiv);
-            div.appendChild(item);
+            itemInfo.appendChild(priceDiv);
+            item.appendChild(itemInfo);
 
             const counter = document.createElement('div');
             counter.className = 'counter';
