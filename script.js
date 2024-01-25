@@ -24,7 +24,7 @@ async function addFoodItems() {
             const foodName = document.createElement('span');
             foodName.textContent = row['FoodItem'];
             item.appendChild(foodName);
-
+    
             const itemsLeft = document.createElement('span');
             itemsLeft.className = 'items-left'; // Add this line
             itemsLeft.textContent = 'Items left: ' + row['ItemsLeft'];
